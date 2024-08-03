@@ -1,0 +1,14 @@
+.bookingContainer {
+   display: flex;
+   justify-content: center;
+   padding: 20px;
+}
+
+.eventsList {
+   width: 45%;
+   margin: 0 24px;
+
+   .title {
+    text-align: center;
+   }
+}

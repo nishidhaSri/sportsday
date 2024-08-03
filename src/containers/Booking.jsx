@@ -1,19 +1,22 @@
 import React from 'react';
-import { NO_EVENT_DATA } from '../api/endpoints';
-import '../App.css';
+import { EVENT_DATA } from '../api/endpoints';
 import EventCards from '../components/EventCards';
 import Fallback from '../components/Fallback';
+import Loader from '../components/Loader';
+import styles from '../styles/booking.module.scss';
 import { isConflicting } from '../utils/helper';
 import useFetch from '../utils/useFetch';
 import useStorage from '../utils/useStorage';
 
+const MAX_ALLOWED_EVENTS = 3
+
 const Booking = () => {
    const [selectedEvents, setSelectedEvents] = useStorage('selectedEvents', []);
-   const { data: events, loading, error } = useFetch(NO_EVENT_DATA);
+   const { data: events, loading, error } = useFetch(EVENT_DATA);
 
    const handleSelect = (event) => {
-      if (selectedEvents.length >= 3) {
-         alert('You can select a maximum of 3 events.');
+      if (selectedEvents.length >= MAX_ALLOWED_EVENTS) {
+         alert('You can select a maximum of ' + MAX_ALLOWED_EVENTS + ' events.');
          return;
       }
       if (isConflicting(event, selectedEvents)) {
@@ -25,12 +28,12 @@ const Booking = () => {
 
    const handleDeselect = (event) => {
       setSelectedEvents(selectedEvents.filter((e) => e.id !== event.id));
-   };  
+   };
 
    return (
-      <div className='app' data-testid='booking-container'>
+      <div className={styles.bookingContainer} data-testid='booking-container'>
          {loading ? (
-            <div>Loading...</div>
+            <Loader />
          ) : error ? (
             <Fallback
                title='Error: Unable to process'
@@ -43,22 +46,29 @@ const Booking = () => {
             />
          ) : (
             <>
-               <div className='events-list'>
-                  <h2>Events</h2>
+               <div className={styles.eventsList}>
+                  <h2 className={styles.title}>Events</h2>
                   <EventCards
                      events={events || []}
                      handleClick={handleSelect}
-                     actionText='Select'
+                     actionText='Add'
                      compareEvents={selectedEvents}
                   />
                </div>
-               <div className='selected-events'>
-                  <h2>Selected Events</h2>
-                  <EventCards
-                     events={selectedEvents}
-                     handleClick={handleDeselect}
-                     actionText='Deselect'
-                  />
+               <div className={styles.eventsList}>
+                  <h2 className={styles.title}>Selected Events</h2>
+                  {selectedEvents.length ? (
+                     <EventCards
+                        events={selectedEvents}
+                        handleClick={handleDeselect}
+                        actionText='Remove'
+                     />
+                  ) : (
+                     <Fallback
+                        title='No events selected'
+                        description={'Select upto ' + MAX_ALLOWED_EVENTS + ' events to participate on Sports Day'}
+                     />
+                  )}
                </div>
             </>
          )}

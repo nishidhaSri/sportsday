@@ -9,23 +9,24 @@ const EventCards = ({ events = [], compareEvents = [], handleClick, actionText }
    return (
       <>
          {events.map((event) => (
-            <Card
-               key={event.id}
-               event={event}
-               onSelect={handleClick}
-               disabled={isEventDisabled(event)}
-               actionText={actionText}
-            />
-         ))}
+               <Card
+                  key={event.id}
+                  event={event}
+                  onSelect={handleClick}
+                  disabled={isEventDisabled(event)}
+                  actionText={actionText}
+               />
+            ))
+         }
       </>
    );
 };
 
 EventCards.propTypes = {
-    events: PropTypes.array, 
-    compareEvents: PropTypes.array, 
-    handleClick: PropTypes.func.isRequired,
-    actionText: PropTypes.string.isRequired
-}
+   events: PropTypes.array,
+   compareEvents: PropTypes.array,
+   handleClick: PropTypes.func.isRequired,
+   actionText: PropTypes.string.isRequired
+};
 
 export default EventCards;

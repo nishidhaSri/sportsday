@@ -39,7 +39,7 @@ describe('Booking Component', () => {
     
     render(<Booking />);
     
-    expect(screen.getByText(/Loading.../i)).toBeInTheDocument();
+    expect(screen.getByTestId('loader')).toBeInTheDocument();
   });
 
   test('renders error state', () => {
@@ -74,7 +74,7 @@ describe('Booking Component', () => {
       expect(screen.getByText(event.name)).toBeInTheDocument();
     });
 
-    const buttons = screen.getAllByText("Select")
+    const buttons = screen.getAllByText("Add")
     fireEvent.click(buttons[0]); 
 
     expect(setStorage).toHaveBeenCalledWith(expect.arrayContaining([mockEvents[0]]));
@@ -87,7 +87,7 @@ describe('Booking Component', () => {
 
     render(<Booking />);
 
-    fireEvent.click(screen.getAllByText("Select")[0]);
+    fireEvent.click(screen.getAllByText("Add")[0]);
     
     expect(window.alert).toHaveBeenCalledTimes(1)
     expect(window.alert).toHaveBeenCalledWith('You can select a maximum of 3 events.');
@@ -100,7 +100,7 @@ describe('Booking Component', () => {
 
     render(<Booking />);
 
-    fireEvent.click(screen.getAllByText("Select")[0]); 
+    fireEvent.click(screen.getAllByText("Add")[0]); 
     
     expect(window.alert).toHaveBeenCalledTimes(1)
     expect(window.alert).toHaveBeenCalledWith('This event conflicts with an already selected event.');
@@ -113,7 +113,7 @@ describe('Booking Component', () => {
 
     render(<Booking />);
 
-    fireEvent.click(screen.getAllByText("Deselect")[0]); 
+    fireEvent.click(screen.getAllByText("Remove")[0]); 
     const expectedSelectedEvents = mockEvents.filter((e) => e.id !== 1);
 
     expect(setSelectedEvents).toHaveBeenCalledTimes(1);

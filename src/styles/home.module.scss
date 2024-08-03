@@ -1,0 +1,55 @@
+@import './variables.scss';
+
+.home {
+   display: flex;
+   align-items: center;
+
+   .content {
+      width: 50%;
+      padding: 5rem;
+      text-align: right;
+      color: $primary;
+
+      .titleContainer {
+         display: flex;
+         flex-direction: column;
+         align-items: end;
+
+         .title1 {
+            font-size: 150px;
+            font-weight: 700;
+         }
+
+         .title2 {
+            font-size: 120px;
+         }
+      }
+
+      p {
+         margin-left: auto;
+         width: 70%;
+         text-align: right;
+         padding: 1rem 0;
+      }
+
+      .btn {
+         padding: 1rem 2rem;
+         border-radius: 2rem;
+         font-size: 16px;
+         border: 2px solid $secondary;
+         background-color: $background;
+         color: $primary;
+         font-weight: 700;
+         cursor: pointer;
+      }
+   }
+
+   .btn:hover {
+      background-color: $primary;
+      color: $background;
+   }
+
+   .imgContainer {
+      width: 50%;
+   }
+}

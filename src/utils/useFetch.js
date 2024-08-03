@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 
+const DEFAULT_ERROR_MESSAGE = "We’re currently experiencing technical difficulties and are unable to process your request at the moment. Please try again later."
+
 const useFetch = (url) => {
    const [data, setData] = useState(null);
    const [loading, setLoading] = useState(true);
    const [error, setError] = useState('');
-   const defaultErrorMsg = "We’re currently experiencing technical difficulties and are unable to process your request at the moment. Please try again later."
 
    useEffect(() => {
       const fetchData = async () => {
@@ -15,9 +16,9 @@ const useFetch = (url) => {
                 throw json;
             }
             setData(json.data);
-            setLoading(false);
          } catch (errorObj) {
-            setError(errorObj?.error || defaultErrorMsg);
+            setError(errorObj?.error || DEFAULT_ERROR_MESSAGE);
+         } finally {
             setLoading(false);
          }
       };
