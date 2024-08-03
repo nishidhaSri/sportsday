@@ -5,11 +5,13 @@ import Home from './containers/Home';
 
 const App = () => {
    return (
-      <Routes>
-         <Route path='/booking' element={<Booking />} />
-         <Route exact path='/' element={<Home />} />
-         <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+      <div data-testid='app-container'>
+            <Routes>
+               <Route path='/booking' element={<Booking />} />
+               <Route exact path='/' element={<Home />} />
+               <Route path='*' element={<Navigate to='/' replace />} />
+            </Routes>
+      </div>
    );
 };
 

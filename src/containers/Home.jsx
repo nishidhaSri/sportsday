@@ -2,9 +2,9 @@ import React from 'react';
 
 const Home = () => {
     return (
-        <div>
-            <h1>Welcome to the Home component!</h1>
-            <p>This is a basic React component.</p>
+        <div data-testid='home-container'>
+            <h1>Welcome to the Home Page!</h1>
+            <p>This is a basic React Page.</p>
         </div>
     );
 };

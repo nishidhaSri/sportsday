@@ -3,7 +3,7 @@ import React from 'react';
 
 const Card = ({ event, onSelect, actionText, disabled = false }) => {
   return (
-    <div className="event-card">
+    <div className="event-card" data-testid="event-card">
       <h3>{event.name}</h3>
       <p>Category: {event.category}</p>
       <p>Timing: {event.startTime} - {event.endTime}</p>
