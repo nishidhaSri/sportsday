@@ -16,11 +16,18 @@
          padding: 0.5rem 2rem;
          border-radius: 2rem;
          font-size: 16px;
+         font-weight: 700;
+         cursor: pointer;
+      }
+
+      .btn {
          border: 2px solid $secondary;
          background-color: $background;
          color: $primary;
-         font-weight: 700;
-         cursor: pointer;
+      }
+
+      .disabledBtn{
+         background-color: $secondary-light;
       }
    }
 }

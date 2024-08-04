@@ -7,7 +7,7 @@ const Card = ({ event, onSelect, actionText, disabled = false }) => {
       <div className={styles.card} data-testid='event-card'>
          <div className={styles.header}>
             <h2>{event.name}</h2>
-            <button onClick={() => onSelect(event)} disabled={disabled}>
+            <button onClick={() => onSelect(event)} disabled={disabled} className={disabled ? styles.disabledBtn : styles.btn}>
                {actionText}
             </button>
          </div>
