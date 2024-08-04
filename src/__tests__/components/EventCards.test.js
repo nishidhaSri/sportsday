@@ -14,6 +14,12 @@ const compareEvents = [
 const compareEventsIdsSet = new Set(compareEvents.map((event) => event.id));
 
 describe('EventCards', () => {
+
+    test('renders event cards with empty data', () => {
+        render(<EventCards handleClick={jest.fn()} actionText='Click' />);
+        expect(screen.queryAllByTestId('event-card')).toHaveLength(0);
+    });
+
     test('renders event cards with correct data', () => {
 
         render(<EventCards events={events} handleClick={jest.fn()} actionText='Click' />);

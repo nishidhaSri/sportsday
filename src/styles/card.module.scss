@@ -2,10 +2,15 @@
 
 .card {
    margin: 16px 0;
-   background: #1c413b;
-   color: #ebe0de;
+   background: $primary;
+   color: $background;
    padding: 12px 24px 24px;
    border-radius: 24px;
+
+   &.disabledCard{
+      background: $secondary-light;
+      color: $secondary;
+   }
 
    .header {
       display: flex;
@@ -28,6 +33,7 @@
 
       .disabledBtn{
          background-color: $secondary-light;
+         border: 2px solid $primary;
       }
    }
 }

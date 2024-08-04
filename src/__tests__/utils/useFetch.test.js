@@ -19,11 +19,11 @@ describe('useFetch', () => {
          json: async () => mockData
       });
 
-      const { result } = renderHook(() => useFetch(url));
+      const { result } = renderHook(() => useFetch(url, []));
 
       // Check initial state
       expect(result.current.loading).toBe(true);
-      expect(result.current.data).toBe(null);
+      expect(result.current.data).toEqual([]);
       expect(result.current.error).toBe('');
 
       await waitFor(() => {
@@ -41,7 +41,7 @@ describe('useFetch', () => {
       global.fetch = jest.fn().mockRejectedValue(mockError);
       const defaultErrorMsg = "We’re currently experiencing technical difficulties and are unable to process your request at the moment. Please try again later."
 
-      const { result } = renderHook(() => useFetch(url));
+      const { result } = renderHook(() => useFetch(url, []));
 
       expect(result.current.loading).toBe(true);
 
@@ -49,7 +49,24 @@ describe('useFetch', () => {
         expect(result.current.loading).toBe(false);
      });
 
-      expect(result.current.data).toBe(null);
+      expect(result.current.data).toEqual([]);
       expect(result.current.error).toEqual(defaultErrorMsg);
    });
+
+   it('should handle errors thrown from fetch', async () => {
+      global.fetch = jest.fn(() =>
+        Promise.resolve({
+          ok: false,
+          json: () => Promise.resolve({ error: 'Something went wrong' })
+        })
+      );
+  
+      const { result } = renderHook(() => useFetch('http://example.com', []));
+      await waitFor(() => {
+         expect(result.current.loading).toBe(false);
+      });
+
+      expect(result.current.data).toEqual([]);
+      expect(result.current.error).toEqual('Something went wrong');
+    });
 });

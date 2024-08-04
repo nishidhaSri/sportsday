@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 
 const DEFAULT_ERROR_MESSAGE = "We’re currently experiencing technical difficulties and are unable to process your request at the moment. Please try again later."
 
-const useFetch = (url) => {
-   const [data, setData] = useState(null);
+const useFetch = (url, initialValue) => {
+   const [data, setData] = useState(initialValue);
    const [loading, setLoading] = useState(true);
    const [error, setError] = useState('');
 

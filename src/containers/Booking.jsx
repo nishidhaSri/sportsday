@@ -12,7 +12,7 @@ const MAX_ALLOWED_EVENTS = 3
 
 const Booking = () => {
    const [selectedEvents, setSelectedEvents] = useStorage('selectedEvents', []);
-   const { data: events, loading, error } = useFetch(EVENT_DATA);
+   const { data: events, loading, error } = useFetch(EVENT_DATA, []);
 
    const handleSelect = (event) => {
       if (selectedEvents.length >= MAX_ALLOWED_EVENTS) {
@@ -37,7 +37,7 @@ const Booking = () => {
          ) : error ? (
             <Fallback
                title='Error: Unable to process'
-               description={error || 'An unknown error occurred.'}
+               description={error}
             />
          ) : !events.length ? (
             <Fallback
@@ -49,7 +49,7 @@ const Booking = () => {
                <div className={styles.eventsList}>
                   <h2 className={styles.title}>Events</h2>
                   <EventCards
-                     events={events || []}
+                     events={events}
                      handleClick={handleSelect}
                      actionText='Add'
                      compareEvents={selectedEvents}

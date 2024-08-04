@@ -13,7 +13,6 @@
       .titleContainer {
          display: flex;
          flex-direction: column;
-         align-items: end;
 
          .title1 {
             font-size: 150px;
@@ -28,7 +27,6 @@
       p {
          margin-left: auto;
          width: 70%;
-         text-align: right;
          padding: 1rem 0;
       }
 
@@ -51,5 +49,35 @@
 
    .imgContainer {
       width: 50%;
+
+      img {
+         width: 100%;
+      }
+   }
+}
+
+@media only screen and (max-width: 720px) {
+   .home {
+      flex-direction: column-reverse;
+      text-align: center;
+
+      .content {
+         text-align: center;
+         padding: 2rem;
+
+         .titleContainer {
+            .title1 {
+               font-size: 100px;
+            }
+
+            .title2 {
+               font-size: 60px;
+            }
+         }
+
+         p {
+            width: 100%;
+         }
+      }
    }
 }

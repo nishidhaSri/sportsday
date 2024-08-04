@@ -11,7 +11,6 @@ const testProps = {
    },
    onSelect: jest.fn(),
    actionText: 'Click',
-   disabled: true
 };
 
 describe('Card', () => {
@@ -25,10 +24,12 @@ describe('Card', () => {
       expect(descriptionElement).toBeInTheDocument();
       expect(startTimeElement).toBeInTheDocument();
       expect(endTimeElement).toBeInTheDocument();
+      const buttonElementDisabled = screen.getByText(/Click/i);
+      expect(buttonElementDisabled).not.toBeDisabled();
    });
 
    test('renders card with disabled button', () => {
-      render(<Card { ...testProps} />);
+      render(<Card { ...testProps} disabled />);
       const buttonElementDisabled = screen.getByText(/Click/i);
       expect(buttonElementDisabled).toBeDisabled();
    });

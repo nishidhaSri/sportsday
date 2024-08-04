@@ -12,3 +12,13 @@
     text-align: center;
    }
 }
+
+@media screen and (max-width: 920px) {
+   .bookingContainer{
+      flex-direction: column-reverse;
+   }
+
+   .eventsList {
+      width: 90%;
+   }
+}

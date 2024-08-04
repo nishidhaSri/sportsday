@@ -39,3 +39,9 @@
       color: $background;
    }
 }
+
+@media only screen and (max-width: 720px) {
+   .navContainer {
+      padding: 1rem;
+   }
+ }
