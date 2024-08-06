@@ -8,7 +8,7 @@
 - User can remove an event from the selected event list.
 
 ## Live Demo
-View the live demo of the application here 👉 [Sports Events](https://sports-events.vercel.app/).
+View the live demo of the application here 👉 [Sports Events](https://sportsday.vercel.app/).
 
 
 ## Presentation Deck

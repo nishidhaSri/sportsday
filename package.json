@@ -42,5 +42,13 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@testing-library/dom": "^10.4.0"
-  }
+  },
+  "jest": {
+    "collectCoverageFrom": [
+        "**/*.{js,jsx}",
+        "!**/node_modules/**",
+        "!**/*index.js",
+        "!**/*reportWebVitals.js"
+    ]
+}
 }

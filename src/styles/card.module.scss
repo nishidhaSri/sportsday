@@ -61,3 +61,19 @@
       }
    }
 }
+
+@media only screen and (max-width: 650px) {
+   .card{
+      .placeHolder{
+         display: none;
+      }
+
+      .verticalSeperator {
+         display: none;
+      }
+
+      .content {
+         width: 100%;
+      }
+   }
+}
